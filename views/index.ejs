@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="<%= __('lang') %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= __('title') %></title>
+
+  <meta name="description" content="<%= __('description') %>">
+  <meta itemprop="name" content="<%= __('title') %>">
+  <meta name="robots" content="index, follow">
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="<%= __('title') %>">
+  <meta name="twitter:description" content="<%= __('description') %>">
+  <meta name="twitter:image:src" content="/images/"/>
+  <meta name="twitter:site" content="QRmeup.me"/>
+
+  <meta property="og:title" content="<%= __('title') %>">
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://qrmeup.me"/>
+  <meta property="og:image" content="/images/"/>
+  <meta property="og:description" content="<%= __('description') %>">
+  <meta property="og:site_name" content="qrmeup.me"/>
+
+  <link rel="icon" type="image/png" href="/images/">
+  <link rel="apple-touch-icon" sizes="192x192" href="/images/">
+  <link rel="shortcut icon" sizes="192x192" href="/images/">
+  <meta name="google" content="notranslate"/>
+
+  <link rel="alternate" hreflang="x-default" href="https://qrmeup.me/">
+  <link rel="canonical" href="https://qrmeup.me/<%= __('lang') %>">
+  <link rel="alternate" hreflang="vi" href="https://qrmeup.me/vi"/>
+  <link rel="alternate" hreflang="en" href="https://qrmeup.me/en"/>
+
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+
+    :root {
+      --header-height: 3.5rem;
+
+      --black-color: hsl(220, 24%, 12%);
+      --black-color-light: hsl(220, 24%, 15%);
+      --black-color-lighten: hsl(220, 20%, 18%);
+      --white-color: #fff;
+      --body-color: hsl(220, 100%, 97%);
+
+      --body-font: "Montserrat", sans-serif;
+      --normal-font-size: .938rem;
+      --font-regular: 400;
+      --font-semi-bold: 600;
+      --z-tooltip: 10;
+      --z-fixed: 100;
+    }
+
+    @media screen and (min-width: 1024px) {
+      :root {
+        --normal-font-size: 1rem;
+      }
+
+
+    }
+
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-family: var(--body-font), serif;
+      font-size: var(--normal-font-size);
+      background-color: var(--body-color);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container-header {
+      max-width: 1100px;
+      margin-inline: 1.5rem;
+    }
+
+    .header {
+      top: 0;
+      left: 0;
+      position: fixed;
+      width: 100%;
+      background-color: var(--white-color);
+      box-shadow: 0 2px 16px hsla(220, 32%, 8%, .3);
+      z-index: var(--z-fixed);
+    }
+
+    .nav-header {
+      height: var(--header-height);
+    }
+
+    .nav__logo,
+    .nav__burger,
+    .nav__close {
+      color: var(--black-color);
+    }
+
+    .nav__data {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav__logo {
+      display: inline-flex;
+      align-items: center;
+      column-gap: .25rem;
+      font-weight: var(--font-semi-bold);
+    }
+
+    .nav__logo i {
+      font-weight: initial;
+      font-size: 1.25rem;
+    }
+
+    .nav__toggle {
+      position: relative;
+      width: 32px;
+      height: 32px;
+    }
+
+    .nav__burger,
+    .nav__close {
+      position: absolute;
+      width: max-content;
+      height: max-content;
+      inset: 0;
+      margin: auto;
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: opacity .1s, transform .4s;
+    }
+
+    .nav__close {
+      opacity: 0;
+    }
+
+    .content-image {
+      display: flex;
+      margin-top: 30px
+    }
+
+    .container-container-form {
+      width: 65%;
+      display: flex;
+      margin: 0 auto
+    }
+
+    .container-form {
+      width: 80%;
+      background: white;
+      display: flex;
+      padding-top: 25px;
+      justify-content: center;
+      border-radius: 5px;
+      box-shadow: 3px 5px 15px rgba(0, 0, 0, .12)
+    }
+
+    .container-result {
+      width: 40%;
+      background: white;
+      margin-left: 20px;
+      border-radius: 5px;
+      box-shadow: 3px 5px 15px rgba(0, 0, 0, .12)
+    }
+
+    .button {
+      position: relative;
+      padding: 12px 18px;
+      background: #242424;
+      border: none;
+      outline: none;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 40%;
+    }
+
+
+    @media screen and (max-width: 1118px) {
+      .nav__menu {
+        position: absolute;
+        left: 0;
+        top: 2.5rem;
+        width: 100%;
+        height: calc(100vh - 3.5rem);
+        overflow: auto;
+        pointer-events: none;
+        opacity: 0;
+        transition: top .4s, opacity .3s;
+      }
+
+      .nav__menu::-webkit-scrollbar {
+        width: 0;
+      }
+
+      .nav__list {
+        background-color: var(--white-color);
+        padding-top: 1rem;
+      }
+
+      .container-container-form {
+        width: 80%;
+      }
+    }
+
+    @media screen and (max-width: 900px) {
+      .container-container-form {
+        width: 90%;
+      }
+
+
+    }
+
+    @media screen and (max-width: 750px) {
+      .container-container-form {
+        display: block;
+      }
+
+      .container-form {
+        width: 100%;
+        min-height: 200px;
+      }
+
+      .container-result {
+        width: 100%;
+        margin-top: 20px;
+        margin-left: 0;
+      }
+
+      .content-image {
+        display: block;
+        margin-top: 20px;
+      }
+
+
+      .content-chill {
+        margin-left: 0;
+        margin-bottom: 10px;
+        margin-top: 10px;
+      }
+    }
+
+
+    .nav__link {
+      color: var(--black-color);
+      background-color: var(--white-color);
+      font-weight: var(--font-semi-bold);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color .3s;
+    }
+
+    .nav__link:hover {
+      background-color: var(--white-color);
+    }
+
+    .show-menu {
+      opacity: 1;
+      top: 3.5rem;
+      pointer-events: initial;
+    }
+
+    .show-icon .nav__burger {
+      opacity: 0;
+      transform: rotate(90deg);
+    }
+
+    .show-icon .nav__close {
+      opacity: 1;
+      transform: rotate(90deg);
+    }
+
+    .dropdown__item {
+      cursor: pointer;
+    }
+
+    .dropdown__arrow {
+      font-size: 1.25rem;
+      font-weight: initial;
+      transition: transform .4s;
+    }
+
+    .dropdown__link,
+    .dropdown__sublink {
+      padding: 1.25rem 1.25rem 1.25rem 2.5rem;
+      color: var(--black-color);
+      background-color: var(--white-color);
+      display: flex;
+      align-items: center;
+      column-gap: .5rem;
+      font-weight: var(--font-semi-bold);
+      transition: background-color .3s;
+      flex: 1;
+    }
+
+    .dropdown__link i,
+    .dropdown__sublink i {
+      font-size: 1.25rem;
+      font-weight: initial;
+    }
+
+    .dropdown__link:hover,
+    .dropdown__sublink:hover {
+      background-color: var(--black-color);
+      color: var(--white-color);
+    }
+
+    .dropdown__menu,
+    .dropdown__submenu {
+      max-height: 0;
+      /*overflow: hidden;*/
+      transition: max-height .4s ease-out;
+    }
+
+    .dropdown__item:hover .dropdown__menu,
+    .dropdown__subitem:hover > .dropdown__submenu {
+      max-height: 1000px;
+      transition: max-height .4s ease-in;
+    }
+
+    .dropdown__item:hover .dropdown__arrow {
+      transform: rotate(180deg);
+    }
+
+    @media screen and (max-width: 340px) {
+      .container-header {
+        margin-inline: 1rem;
+      }
+
+      .nav__link {
+        padding-inline: 1rem;
+      }
+
+      .button {
+        font-size: 10px;
+        width: 120px;
+      }
+    }
+
+    @media screen and (min-width: 1118px) {
+      .container-header {
+        margin-inline: auto;
+      }
+
+      .nav-header {
+        height: calc(var(--header-height) + 2rem);
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .nav__toggle {
+        display: none;
+      }
+
+      .nav__list {
+        height: 100%;
+        display: flex;
+        column-gap: 3rem;
+      }
+
+      .nav__link {
+        height: 100%;
+        padding: 0;
+        justify-content: initial;
+        column-gap: .25rem;
+      }
+
+      .nav__link:hover {
+        background-color: transparent;
+      }
+
+      .dropdown__item,
+      .dropdown__subitem {
+        position: relative;
+      }
+
+      .dropdown__menu,
+      .dropdown__submenu {
+        max-height: initial;
+        overflow: initial;
+        position: absolute;
+        left: 0;
+        top: 6rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .3s, top .3s;
+      }
+
+      .dropdown__link,
+      .dropdown__sublink {
+        padding-inline: 1rem 3.5rem;
+      }
+
+      .dropdown__subitem .dropdown__link {
+        padding-inline: 1rem;
+      }
+
+      .dropdown__submenu {
+        position: absolute;
+        left: 100%;
+        top: .5rem;
+      }
+
+      .dropdown__item:hover .dropdown__menu {
+        opacity: 1;
+        top: 5.5rem;
+        pointer-events: initial;
+        transition: top .3s;
+      }
+
+      .dropdown__subitem:hover > .dropdown__submenu {
+        opacity: 1;
+        top: 0;
+        pointer-events: initial;
+        transition: top .3s;
+      }
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+    }
+
+    .input {
+      width: 100%;
+      min-height: 50px;
+      padding: .5rem 1rem;
+      background-color: #f2f2f2;
+      box-shadow: none;
+      border-radius: 6px 0 0 6px;
+      border: 1px solid #e0e0e0;
+      color: #5d5d5d;
+
+    }
+
+    .button--submit {
+      min-height: 50px;
+      border: none;
+      border-radius: 0 6px 6px 0;
+      background-color: #242424;
+      color: #fff;
+      font-size: 13px;
+      padding-left: 10px;
+      padding-right: 10px;
+      cursor: pointer;
+      transition: background-color .3s ease-in-out;
+    }
+
+    .button--submit:hover {
+      background-color: #5e5dcd;
+    }
+
+    .input:focus, .input:focus-visible {
+      border-color: #3898EC;
+      outline: none;
+    }
+
+    #qrCodeContainer {
+      display: flex;
+      gap: 20px;
+      min-height: 250px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-code-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .qr-code-container img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 20px;
+    }
+
+    .button:active {
+      background: #242424;
+    }
+
+    .button__text {
+      color: #ffffff;
+      transition: all 0.2s;
+    }
+
+    .button--loading .button__text {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .button--loading::after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      border: 4px solid transparent;
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: button-loading-spinner 1s ease infinite;
+    }
+
+    @keyframes button-loading-spinner {
+      from {
+        transform: rotate(0turn);
+      }
+
+      to {
+        transform: rotate(1turn);
+      }
+    }
+
+    .Btn {
+      width: 50px;
+      height: 50px;
+      border: none;
+      border-radius: 5%;
+      background-color: rgb(27, 27, 27);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      /*position: relative;*/
+      transition-duration: 0.3s;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
+      color: white;
+      font-size: 11px;
+    }
+
+    .svgIcon {
+      fill: #2196f3;
+    }
+
+    .icon2 {
+      width: 18px;
+      height: 5px;
+      border-bottom: 2px solid #2196f3;
+      border-left: 2px solid #2196f3;
+      border-right: 2px solid #2196f3;
+      margin-bottom: 10px;
+    }
+
+    .Btn:hover {
+      opacity: 1;
+      transition-duration: 0.3s;
+    }
+
+    .Btn:hover {
+      background-color: #2196f3;
+      transition-duration: 0.3s;
+    }
+
+    .Btn:hover .icon2 {
+      border-bottom: 2px solid white;
+      border-left: 2px solid white;
+      border-right: 2px solid white;
+    }
+
+    .Btn:hover .svgIcon {
+      fill: white;
+      animation: slide-in-top 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+
+    @keyframes slide-in-top {
+      0% {
+        transform: translateY(-10px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0px);
+        opacity: 1;
+      }
+    }
+
+    .container-download {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #loading2 {
+      position: absolute;
+      width: 2.25em;
+      transform-origin: center;
+      animation: rotate4 2s linear infinite;
+    }
+
+    circle {
+      fill: none;
+      stroke: hsl(214, 97%, 59%);
+      stroke-width: 2;
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      stroke-linecap: round;
+      animation: dash4 1.5s ease-in-out infinite;
+    }
+
+    @keyframes rotate4 {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes dash4 {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+
+      50% {
+        stroke-dasharray: 90, 200;
+        stroke-dashoffset: -35px;
+      }
+
+      100% {
+        stroke-dashoffset: -125px;
+      }
+    }
+
+    .accordion {
+      background-color: #eee;
+      color: #444;
+      cursor: pointer;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+      transition: background-color 0.4s;
+      margin-top: 20px;
+      border-radius: 10px;
+      position: relative;
+      padding: 18px 55px 18px 18px;
+    }
+
+    .active, .accordion:hover {
+      background-color: #ccc;
+    }
+
+    .panel {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+    }
+
+    .panel p {
+      margin-block-start: 1.3em;
+      text-align: justify;
+    }
+
+    .accordion i {
+      position: absolute;
+      top: 50%;
+      right: 18px;
+      transform: translateY(-50%);
+      transition: transform 0.4s;
+    }
+
+    .accordion.active i {
+      transform: translateY(-50%) rotate(-180deg);
+    }
+
+    .mlr {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 15px 0;
+      text-align: center;
+      width: 100%;
+      bottom: 0;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-content p {
+      margin: 5px 0;
+    }
+
+    .footer-content a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+  </style>
+
+
+</head>
+<body>
+
+<header class="header">
+  <nav class="nav-header container-header">
+    <div class="nav__data">
+      <a href="/" class="nav__logo">
+        <i class="ri-planet-line"></i> FilSave
+      </a>
+
+      <div class="nav__toggle" id="nav-toggle">
+        <i class="ri-menu-line nav__burger"></i>
+        <i class="ri-close-line nav__close"></i>
+      </div>
+    </div>
+
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li class="dropdown__item">
+          <div class="nav__link">
+            Language <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+          </div>
+
+          <ul class="dropdown__menu">
+            <li style="display: flex">
+              <a href="/en" class="dropdown__link"> <i></i> English </a>
+              <a href="/vi" class="dropdown__link"> <i></i> Vietnamese</a>
+            </li>
+
+            <li style="display: flex">
+              <a href="/es" class="dropdown__link"> <i></i> Español </a>
+              <a href="/fr" class="dropdown__link"> <i></i> Français </a>
+            </li>
+            <li style="display: flex">
+              <a href="/zh-CN" class="dropdown__link"> <i></i> 中文 </a>
+              <a href="/de" class="dropdown__link"> <i></i> Deutsch </a>
+            </li>
+            <li style="display: flex">
+              <a href="/ja" class="dropdown__link"> <i></i> 日本語 </a>
+              <a href="/ko" class="dropdown__link"> <i></i> 한국어 </a>
+            </li>
+            <li style="display: flex">
+              <a href="/pt" class="dropdown__link"> <i></i> Português </a>
+              <a href="/it" class="dropdown__link"> <i></i> Italiano </a>
+            </li>
+            <li style="display: flex">
+              <a href="/hi" class="dropdown__link"> <i></i> हिन्दी </a>
+              <a href="/it" class="dropdown__link"> <i></i> Italiano </a>
+            </li>
+            <li style="display: flex">
+              <a href="/id" class="dropdown__link"> <i></i> Bahasa Indonesia </a>
+              <a href="/my" class="dropdown__link"> <i></i> Bahasa Melayu </a>
+            </li>
+            <li style="display: flex">
+              <a href="/th" class="dropdown__link"> <i></i> ไทย </a>
+              <a href="/ru" class="dropdown__link"> <i></i>Русский </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<section style="margin-bottom: 50px">
+  <div class="title-body" style="margin-top: 150px;margin-bottom: 40px;">
+    <h1 style="text-align: center;color: #616568;margin-right: 10px;margin-left: 10px"><%= __('title-body') %></h1>
+    <p style="text-align: center;margin-top: 3px;color: #616568;margin-right: 10px;margin-left: 10px"><%= __('title-chill') %></p>
+  </div>
+
+  <div class="container-container-form">
+    <div class="container-form">
+      <form id="qrForm" style="width: 90%">
+        <h4 style="margin-bottom: 5px"><%= __('label-input') %></h4>
+        <div class="input-group">
+          <input type="text" class="input" id="url" name="url"
+                 placeholder="Ex: <%= __('placeholder-input') %>"
+                 autocomplete="off">
+          <button class="button--submit" id="pasteButton" value="Subscribe"><%= __('text-pastes') %></button>
+        </div>
+        <button type="button" class="button" id="createQr">
+          <span id="content-button" class="button__text"><%= __('text-button') %></span>
+        </button>
+      </form>
+
+    </div>
+    <div id="qrCodeContainer" class="container-result">
+
+    </div>
+  </div>
+</section>
+
+<section style="width: 80%; height: 100%;margin:0 auto;">
+
+  <div class="title-content" style="margin-bottom: 30px">
+    <h2 style="text-align: center;color: #616568"><%= __('title-content-body') %> </h2>
+  </div>
+  <div class="content">
+    <h4 style="color: #616568"><%= __('title-content-body1') %> </h4>
+    <p style="margin-top: 5px;color: #616568; text-align: justify">
+      <%= __('content-text1') %>
+    </p>
+  </div>
+
+  <div class="content-image">
+    <div class="content-chill" style="">
+      <h4 style="color: #616568"> <%= __('title-content-body2') %> </h4>
+      <p style="margin-top: 5px;color: #616568; text-align: justify">
+        <%= __('content-text2') %>
+      </p>
+    </div>
+  </div>
+
+  <div class="content-chill" style="margin-top: 20px">
+    <h4 style="color: #616568"><%= __('title-content-body3') %>
+    </h4>
+    <p style="margin-top: 5px;color: #616568; text-align: justify">
+      <%= __('content-text3') %>
+    </p>
+  </div>
+
+
+  <div class="content-image">
+    <div class="content-chill">
+      <h4 style="color: #616568"><%= __('title-content-body4') %>
+      </h4>
+      <p style="margin-top: 5px;color: #616568; text-align: justify;margin-right: 20px">
+        <%= __('content-text4') %>
+      </p>
+    </div>
+  </div>
+
+  <div class="content-chill" style="margin-top: 20px">
+    <h4 style="color: #616568"><%= __('title-content-body5') %>
+    </h4>
+    <p style="margin-top: 5px;color: #616568; text-align: justify">
+      <%= __('content-text5') %>
+    </p>
+  </div>
+
+  <div class="content-image">
+    <div class="content-chill">
+      <h4 style="color: #616568"><%= __('title-content-body6') %></h4>
+      <p style="margin-top: 5px;color: #616568; text-align: justify">
+        <%= __('content-text6') %>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section style="margin-top: 40px;margin-bottom: 40px">
+  <div class="content-faqs" style="width: 80%; height: 100%;margin:0 auto;">
+    <h4><%= __('title-h4-faqs') %></h4>
+
+    <div class="mlr">
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button itemprop="name" class="accordion"><%= __('name-faqs1') %><i
+                  class="fas fa-chevron-down"></i>
+        </button>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="panel">
+          <ul>
+            <li>
+              <p itemprop="text"><%= __('text-faqs1') %></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mlr">
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button itemprop="name" class="accordion"><%= __('name-faqs2') %><i
+                  class="fas fa-chevron-down"></i>
+        </button>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="panel">
+          <ul>
+            <li>
+              <p itemprop="text"><%= __('text-faqs2') %></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mlr">
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button itemprop="name" class="accordion"><%= __('name-faqs3') %><i
+                  class="fas fa-chevron-down"></i>
+        </button>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="panel">
+          <ul>
+            <li>
+              <p itemprop="text"><%= __('text-faqs3') %></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mlr">
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button itemprop="name" class="accordion"><%= __('name-faqs4') %><i
+                  class="fas fa-chevron-down"></i>
+        </button>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="panel">
+          <ul>
+            <li>
+              <p itemprop="text"><%= __('text-faqs4') %></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mlr">
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button itemprop="name" class="accordion"><%= __('name-faqs5') %><i
+                  class="fas fa-chevron-down"></i>
+        </button>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="panel">
+          <ul>
+            <li>
+              <p itemprop="text"><%= __('text-faqs5') %></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mlr">
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button itemprop="name" class="accordion"><%= __('name-faqs6') %><i
+                  class="fas fa-chevron-down"></i>
+        </button>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="panel">
+          <ul>
+            <li>
+              <p itemprop="text"><%= __('text-faqs6') %></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mlr">
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button itemprop="name" class="accordion"><%= __('name-faqs7') %><i
+                  class="fas fa-chevron-down"></i>
+        </button>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="panel">
+          <ul>
+            <li>
+              <p itemprop="text"><%= __('text-faqs7') %></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mlr">
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button itemprop="name" class="accordion"><%= __('name-faqs8') %><i
+                  class="fas fa-chevron-down"></i>
+        </button>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="panel">
+          <ul>
+            <li>
+              <p itemprop="text"><%= __('text-faqs8') %></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mlr">
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button itemprop="name" class="accordion"><%= __('name-faqs9') %><i
+                  class="fas fa-chevron-down"></i>
+        </button>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="panel">
+          <ul>
+            <li>
+              <p itemprop="text"><%= __('text-faqs9') %></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mlr">
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button itemprop="name" class="accordion"><%= __('name-faqs10') %><i
+                  class="fas fa-chevron-down"></i>
+        </button>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="panel">
+          <ul>
+            <li>
+              <p itemprop="text"><%= __('text-faqs10') %></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+<footer>
+  <div class="footer-content">
+    <p>Designed by <a href="/">NTC</a></p>
+    <p>&copy; 2024 - All rights reserved</p>
+  </div>
+</footer>
+
+<script>
+
+  document.getElementById('pasteButton').addEventListener('click', function (event) {
+    event.preventDefault();
+    navigator.clipboard.readText().then(text => {
+      // Kiểm tra nếu nội dung paste là rỗng
+      if (text.trim() === '') {
+        console.log('Website không cho phép quyền paste.');
+      } else {
+        document.getElementById('url').value = text;
+      }
+    }).catch(err => {
+      // Xử lý lỗi mà không hiển thị trong console
+      if (err.name !== 'NotAllowedError') {
+        console.error('Failed to read clipboard contents: ', err);
+      }
+    });
+  });
+  document.getElementById('createQr').addEventListener('click', function (event) {
+    event.preventDefault();
+    let url = document.getElementById('url').value;
+    const contentButton = document.getElementById("createQr");
+    const loading = document.getElementById("loading2");
+
+    contentButton.classList.add("button--loading");
+    loading.style.display = "flex";
+    fetch(`/generate-qr-code-canvas?url=${encodeURIComponent(url)}`)
+            .then(response => response.json())
+            .then(qrDataArray => {
+              qrDataArray.forEach((qrData) => {
+                const qrCodeContainer = document.getElementById(`qrCode1Container`);
+                qrCodeContainer.innerHTML = createQRCodeHTML(qrData);
+                document.getElementById('url').value = "";
+              });
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('Failed to generate QR codes!');
+            })
+            .finally(() => {
+              contentButton.classList.remove("button--loading")
+              loading.style.display = "none";
+
+
+            });
+  });
+
+  function createQRCodeHTML(qrData) {
+    const defaultSize = qrData[0].base64String;
+    const largeSize = qrData[1].base64String;
+    const extraLargeSize = qrData[2].base64String;
+
+    return `
+            <div>
+                    <img src="data:image/png;base64,${defaultSize}" alt="QR Code">
+                    <div class="container-download">
+                        <button onclick="downloadImage('data:image/png;base64,${defaultSize}', 'qrcode.png')" class="Btn">
+                          <svg
+                            class="svgIcon"
+                            viewBox="0 0 384 512"
+                            height="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                            ></path>
+                          </svg>
+                          <span class="icon2"></span>
+                          150x150
+                    </button>
+                        <button onclick="downloadImage('data:image/png;base64,${largeSize}', 'qrcode-large.png')" class="Btn">
+                          <svg
+                            class="svgIcon"
+                            viewBox="0 0 384 512"
+                            height="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                            ></path>
+                          </svg>
+                          <span class="icon2"></span>
+                          300x300
+                    </button>
+                        <button onclick="downloadImage('data:image/png;base64,${extraLargeSize}', 'qrcode-extra-large.png')" class="Btn">
+                              <svg
+                                class="svgIcon"
+                                viewBox="0 0 384 512"
+                                height="1em"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                                ></path>
+                              </svg>
+                              <span class="icon2"></span>
+                              500x500
+                        </button>
+                    </div>
+            </div>
+    `;
+  }
+
+  function downloadImage(base64Data, fileName) {
+    const link = document.createElement('a');
+    link.href = base64Data;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  const showMenu = (toggleId, navId) => {
+    const toggle = document.getElementById(toggleId),
+            nav = document.getElementById(navId)
+    const button = document.getElementById("createQr")
+    const loading = document.getElementById("loading2")
+    const img_default = document.getElementById("img_default")
+
+    toggle.addEventListener('click', () => {
+      // Add show-menu class to nav menu
+      nav.classList.toggle('show-menu')
+      button.style.position = "initial"
+      img_default.style.opacity = 1
+      loading.style.display = "none"
+      // Add show-icon to show and hide the menu icon
+      toggle.classList.toggle('show-icon')
+    })
+  }
+
+  showMenu('nav-toggle', 'nav-menu')
+
+  const acc = document.getElementsByClassName("accordion");
+  let i;
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+      const panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  }
+
+</script>
+<script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+          {
+              "@type": "Question",
+              "name": "<%= __('name-faqs1') %>",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "<%= __('text-faqs1') %>"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "<%= __('name-faqs2') %>",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "<%= __('text-faqs2') %>"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "<%= __('name-faqs3') %>",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "<%= __('text-faqs3') %>"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "<%= __('name-faqs4') %>",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "<%= __('text-faqs4') %>"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "<%= __('name-faqs5') %>",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "<%= __('text-faqs5') %>"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "<%= __('name-faqs6') %>",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "<%= __('text-faqs6') %>"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "<%= __('name-faqs7') %>",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "<%= __('text-faqs7') %>"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "<%= __('name-faqs8') %>",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "<%= __('text-faqs8') %>"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "<%= __('name-faqs9') %>",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "<%= __('text-faqs9') %>"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "<%= __('name-faqs10') %>",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "<%= __('text-faqs10') %>"
+                    }
+                }
+
+            ]
+        }
+</script>
+
+</body>
+</html>
