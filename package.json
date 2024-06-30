@@ -14,5 +14,12 @@
     "http-errors": "~1.6.3",
     "i18n": "^0.15.1",
     "morgan": "~1.9.1"
-  }
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node"
+  ]
 }
