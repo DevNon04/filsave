@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build": "webpack --config webpack.config.js",
     "start": "node ./bin/www"
   },
   "dependencies": {
@@ -14,12 +15,5 @@
     "http-errors": "~1.6.3",
     "i18n": "^0.15.1",
     "morgan": "~1.9.1"
-  },
-  "engines": {
-    "node": "18.x"
-  },
-  "license": "MIT",
-  "keywords": [
-    "node"
-  ]
+  }
 }
